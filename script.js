@@ -33,7 +33,7 @@ copyBtn.addEventListener("click", ()=>{
 }); 
 
 xBtn.addEventListener("click", ()=> {
-    let xUrl = `https://x.com/intent/x?url=${quoteText.innerText}`;
+    let xUrl = `https://twitter.com/intent/tweet?text=${quoteText.innerText}`;
     window.open(xUrl, "_blank");
 });
 
