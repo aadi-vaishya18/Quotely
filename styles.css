@@ -122,3 +122,73 @@ h2 {
 .one > button img {
     width: 50%;
 }
+/* ---------- Responsive Design ---------- */
+
+/* Tablets (width ≤ 992px) */
+@media (max-width: 992px) {
+    main {
+        width: 55%;
+        margin: 180px auto;
+        padding: 30px;
+    }
+}
+
+/* Small Tablets & Large Mobiles (width ≤ 768px) */
+@media (max-width: 768px) {
+    main {
+        width: 75%;
+        margin: 150px auto;
+        padding: 25px;
+    }
+
+    .btnContainer {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .two {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .two > button {
+        width: 120px;
+    }
+}
+
+/* Mobile Phones (width ≤ 480px) */
+@media (max-width: 480px) {
+    body {
+        background-position: center;
+    }
+
+    main {
+        width: 90%;
+        margin: 100px auto;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .quotes {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .one {
+        gap: 10px;
+    }
+
+    .one > button {
+        width: 45px;
+        height: 45px;
+    }
+
+    .two > button {
+        width: 110px;
+        padding: 10px;
+    }
+}
