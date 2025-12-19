@@ -4,37 +4,55 @@ let authorName = document.querySelector(".author .name");
 let soundBtn = document.querySelector(".speaker");
 let copyBtn = document.querySelector(".copy");
 let xBtn = document.querySelector(".x");
+let whatsappBtn = document.querySelector(".whatsapp");
 
 function randomQuote() {
-    quoteBtn.innerText="Loading....."
-    quoteBtn.classList.add("loading");
+    quoteBtn.innerText = "Loading...";
     fetch("https://api.api-ninjas.com/v2/randomquotes?categories=success,wisdom", {
-        method: "GET",
         headers: {
             "X-Api-Key": "FpNYwh/Mbhota83Fzlq/rA==jDoMd1SA6mMwcmEm"
         }
     })
     .then(res => res.json())
     .then(data => {
-            quoteText.innerText = `${data[0].quote}`;
-            authorName.innerText = `${data[0].author}`;
-            quoteBtn.innerText = "New Quote";
-            quoteBtn.classList.remove("loading");
+        quoteText.innerText = data[0].quote;
+        authorName.innerText = `— ${data[0].author}`;
+        quoteBtn.innerText = "New Quote";
     })
+    .catch(() => {
+        quoteText.innerText = "Failed to load quote 😢";
+        quoteBtn.innerText = "New Quote";
+    });
 }
 
-soundBtn.addEventListener("click", ()=>{
-    let utterance = new SpeechSynthesisUtterance(`${quoteText.innerText} by ${authorName.innerText}`);
+/* Speaker */
+soundBtn.addEventListener("click", () => {
+    let utterance = new SpeechSynthesisUtterance(
+        `${quoteText.innerText} by ${authorName.innerText}`
+    );
     speechSynthesis.speak(utterance);
 });
 
-copyBtn.addEventListener("click", ()=>{
-    navigator.clipboard.writeText(quoteText.innerText);
-}); 
+/* Copy */
+copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(`${quoteText.innerText} ${authorName.innerText}`);
+});
 
-xBtn.addEventListener("click", ()=> {
-    let xUrl = `https://twitter.com/intent/tweet?text=${quoteText.innerText}`;
-    window.open(xUrl, "_blank");
+/* X (Twitter) */
+xBtn.addEventListener("click", () => {
+    let text = `"${quoteText.innerText}" ${authorName.innerText}`;
+    let url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+});
+
+/* WhatsApp */
+whatsappBtn.addEventListener("click", () => {
+    let text = `"${quoteText.innerText}" ${authorName.innerText}`;
+    let url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
 });
 
 quoteBtn.addEventListener("click", randomQuote);
+
+/* Load quote on page load */
+randomQuote();
