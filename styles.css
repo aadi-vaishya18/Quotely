@@ -160,6 +160,7 @@ h2 {
 @media (max-width: 480px) {
     body {
         background-position: center;
+        background-size: cover;
     }
 
     main {
@@ -192,3 +193,4 @@ h2 {
         padding: 10px;
     }
 }
+
