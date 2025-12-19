@@ -1,196 +1,179 @@
-@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* RESET */
 * {
-    padding: 0;
     margin: 0;
-    box-sizing: border-box; /* ✅ important fix */
+    padding: 0;
+    box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
 
+/* FULL SCREEN BACKGROUND */
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
 body {
-    background-image: url("assets/bg.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-/* Main Card */
-main {
-    background-color: aliceblue;
-    width: 35%;
-    margin: 240px auto;
-    padding: 40px;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column; /* ✅ REQUIRED */
-    gap: 20px;
-    position: relative;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-.content {
-    margin: 35px 0 ;
-}
-.quote-area {
+    min-height: 100vh;
+    background: url("assets/bg.png") center / cover no-repeat;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-.quote-area i {
-    font-size: 15px;
-}
-.quote-area i:first-child {
-    margin: 3px 10px 0 0;
-}
-.quote-area i:last-child {
-    margin: 3px 10px 0 0;
+
+/* MAIN CARD */
+main {
+    width: 100%;
     display: flex;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
 }
-.quote-area {
-    font-size: 23px;
+
+/* CONTAINER */
+.container {
+    background: rgba(240, 248, 255, 0.96);
+    width: 35%;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+/* TITLE */
+h2 {
     text-align: center;
-    word-break: break-all;
+    margin-bottom: 25px;
+    font-weight: 600;
 }
+
+/* CONTENT */
+.content {
+    margin-bottom: 25px;
+}
+
+/* QUOTE AREA */
+.quote-area {
+    position: relative;
+    padding: 30px 40px;
+}
+
+/* QUOTE TEXT */
+.quote {
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* QUOTE ICONS */
+.fa-quote-left,
+.fa-quote-right {
+    position: absolute;
+    font-size: 1.6rem;
+    color: #555;
+    opacity: 0.7;
+}
+
+.fa-quote-left {
+    top: 0;
+    left: 5px;
+}
+
+.fa-quote-right {
+    bottom: 0;
+    right: 5px;
+}
+
+/* AUTHOR */
 .author {
-    display: flex;
-    font-size: 18px;
+    text-align: right;
     font-style: italic;
-    margin-top: 20px;
-    justify-content: flex-end;
+    margin-top: 10px;
 }
-.author span:first-child {
-    margin-right: 5px;
-    font-family: monospace; 
-}
-/* Button Container */
+
+/* BUTTON CONTAINER */
 .btnContainer {
     display: flex;
-    justify-content: space-between; /* left & right */
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
     border-top: 1px solid #ccc;
+    padding-top: 20px;
 }
 
-/* Left Buttons */
+/* LEFT BUTTONS */
 .one {
     display: flex;
-    gap: 15px; /* equal spacing */
-    margin-top: 20px;
+    gap: 15px;
 }
 
-.one > button {
+.one button {
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: aliceblue;
-    display: flex;
-    justify-content: center; /* ✅ better than space-evenly */
-    align-items: center;
     border: none;
+    background: transparent;
     cursor: pointer;
-    transition: 0.2s ease-in;
-}
-.one > button:hover{
-    background-color: grey;
-    border: 1px solid black;
-}
-
-/* Right Button */
-.two {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
 }
 
-.two > button {
-    width: 100px;
-    border-radius: 50px;
+.one button:hover {
+    transform: scale(1.1);
+}
+
+/* NEW QUOTE BUTTON */
+.two button {
+    padding: 10px 22px;
+    border-radius: 30px;
     background-color: black;
     color: white;
-    padding: 10px;
     border: none;
     cursor: pointer;
+    font-size: 0.9rem;
 }
 
-.two > button.loading {
-    opacity: 0.7;
+/* LOADING STATE */
+button.loading {
+    opacity: 0.6;
     pointer-events: none;
 }
-/* Optional: Image sizing inside circular buttons */
-.one > button img {
-    width: 50%;
-}
-/* ---------- Responsive Design ---------- */
 
-/* Tablets (width ≤ 992px) */
+/* RESPONSIVE DESIGN */
 @media (max-width: 992px) {
-    main {
-        width: 55%;
-        margin: 180px auto;
-        padding: 30px;
+    .container {
+        width: 60%;
     }
 }
 
-/* Small Tablets & Large Mobiles (width ≤ 768px) */
-@media (max-width: 768px) {
-    main {
-        width: 75%;
-        margin: 150px auto;
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
         padding: 25px;
+    }
+
+    .quote {
+        font-size: 1rem;
+    }
+
+    .fa-quote-left,
+    .fa-quote-right {
+        font-size: 1.2rem;
     }
 
     .btnContainer {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
     }
 
-    .two {
+    .two button {
         width: 100%;
-        justify-content: center;
-    }
-
-    .two > button {
-        width: 120px;
     }
 }
 
-/* Mobile Phones (width ≤ 480px) */
-@media (max-width: 480px) {
+/* iOS HEIGHT FIX */
+@supports (-webkit-touch-callout: none) {
     body {
-        background-position: center;
-        background-size: cover;
-    }
-
-    main {
-        width: 90%;
-        margin: 100px auto;
-        padding: 20px;
-    }
-
-    h2 {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .quotes {
-        font-size: 16px;
-        text-align: center;
-    }
-
-    .one {
-        gap: 10px;
-    }
-
-    .one > button {
-        width: 45px;
-        height: 45px;
-    }
-
-    .two > button {
-        width: 110px;
-        padding: 10px;
+        min-height: -webkit-fill-available;
     }
 }
-
